@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كافيليكس | QAVELYX - Beyond Shopping. Beyond Limits.</title>
+    <!-- استيراد خط عربي أنيق -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0A192F;
+            --accent-blue: #1D4ED8;
+            --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --gold-solid: #D4AF37;
+            --dark-bg: #070D1B;
+            --card-bg: #111E38;
+            --text-light: #F8FAFC;
+            --text-gray: #94A3B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-solid);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+            color: var(--gold-solid);
+            cursor: pointer;
+        }
+
+        /* قسم الهيرو (الواجهة الترحيبية) */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #112240 0%, #070D1B 100%);
+            position: relative;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .cta-btn {
+            background: var(--gold-gradient);
+            color: var(--primary-blue);
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: 750;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        /* ردهة الأقسام (الخانات الرئيسية) */
+        .categories-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold-solid);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-solid);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-card i {
+            font-size: 45px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .category-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* تذييل الصفحة (Footer) */
+        footer {
+            background: #040810;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        footer span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <div class="logo-text">QAVELYX | كافيليكس</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#categories">الأقسام</a></li>
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero">
+        <h1>QAVELYX</h1>
+        <p>Beyond Shopping. Beyond Limits.</p>
+        <a href="#categories" class="cta-btn">استكشف الأقسام الآن</a>
+    </section>
+
+    <!-- ردهة أقسام المتجر -->
+    <section id="categories" class="categories-section">
+        <h2 class="section-title">ردهة المتجر - الأقسام الرئيسية</h2>
+        <div class="categories-grid">
+            
+            <!-- القسم الأول -->
+            <div class="category-card">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h3>الأزياء والموضة</h3>
+                <p>تشكيلة راقية من الملابس والاكسسوارات العصرية.</p>
+            </div>
+
+            <!-- القسم الثاني -->
+            <div class="category-card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>الهواتف والأجهزة الذكية</h3>
+                <p>أحدث إصدارات الجوالات وملحقاتها التقنية.</p>
+            </div>
+
+            <!-- القسم الثالث -->
+            <div class="category-card">
+                <i class="fa-solid fa-laptop"></i>
+                <h3>الإلكترونيات والكمبيوتر</h3>
+                <p>أجهزة لابتوب وشاشات وأنظمة تكنولوجية متطورة.</p>
+            </div>
+
+            <!-- القسم الرابع -->
+            <div class="category-card">
+                <i class="fa-solid fa-shirt"></i>
+                <h3>الملابس والمستلزمات</h3>
+                <p>منتجات مخصصة وتصميمات فريدة تلبي احتياجاتك.</p>
+            </div>
+
+            <!-- القسم الخامس -->
+            <div class="category-card">
+                <i class="fa-solid fa-spray-can-sparkles"></i>
+                <h3>العطور والتجميل</h3>
+                <p>أرقى العطور العالمية ومستحضرات العناية الشخصية.</p>
+            </div>
+
+            <!-- القسم السادس -->
+            <div class="category-card">
+                <i class="fa-solid fa-house-chimney"></i>
+                <h3>مستلزمات المنزل</h3>
+                <p>أحدث الأدوات والديكورات العصرية لراحة منزلك.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 <span>كافيليكس | QAVELYX</span></p>
+    </footer>
+
+</body>
+</html>
